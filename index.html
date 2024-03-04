@@ -1,16 +1,31 @@
+<!-- 
+Nama : Alwan Hakim Ramadhani
+NIM : 434221038 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <style>
     @font-face {
             font-family: "Abolition";
             src:url('ABOLITIONTEST-REGULAR.OTF');
         }
-        
+
+    @font-face {
+            font-family: "AktivGrotesk-Bold";
+            src:url('AktivGrotesk-Bold.ttf');
+        }
+
+    @font-face {
+            font-family: "AktivGrotesk-Regular";
+            src:url('AktivGrotesk-Regular.ttf');
+        }
     *{
         margin: 0;
         padding: 0;
@@ -19,7 +34,7 @@
     body{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 2fr repeat(4, 1fr) 2.5fr 2.5fr 3fr 2fr ;
+        grid-template-rows: 2fr repeat(4, 1fr) 1.8fr 2.2fr 3fr 1fr ;
         grid-template-areas: 
         "Header Header Header"
         "Produk1 Produk2 Produk3"
@@ -28,27 +43,69 @@
         "News1 News1 News1"
         "News2 News2 News2"
         "News3 News3 News3"
-        "News4 News4 News4"
+        "sidebar News4 News4"
         "Footer Footer Footer"
         ;
         /* font-family: Abolition; */
-        margin: 6% 5% 0% 5%;
+        margin: 12vh 10% 0% 10%;
+        gap: 1vw;
     }
     nav{
         background-color: rgb(255, 255, 255);
         grid-area: Nav;
         position: fixed;
         top: 0;
-        height: 8%;
-        width: 90%;
-        /* box-shadow: 0px 1px 5px rgba(192, 192, 192, 0.3); */
+        left: 0;
+        /* height: 8%; */
+        width: 100%;
+        padding: 1vh;
+        box-shadow: 0px 1px 5px rgba(192, 192, 192, 0.3);
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
+        z-index: 99;
     }
     .Header{
-        background-color: bisque;
+        /* background-color: bisque; */
         grid-area: Header;
+        height: 90vh;
+        z-index: 0;
+    }
+    .Galery{
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: 1s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0rem;
+        z-index: 0;
+    }
+    .Galery p{
+        position: absolute;
+        font-family: Abolition;
+        color: white;
+        z-index: 1;
+    }
+
+    .Galery:hover{
+        transition: all 1s;
+        background-size: 110%;
+        font-size: 4rem;
+    }
+
+    .Galery::before {
+        content: '';
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0); 
+        z-index: -1;
+        transition: 1s;
+    }
+
+    .Galery:hover::before {
+        background-color: rgba(0, 0, 0, 0.4); 
     }
     .Galery:nth-child(even){
         background-color: blueviolet;
@@ -60,24 +117,175 @@
     }
     
     .News1{
-        background-color: brown;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0 1vh;
+        align-items: center;
+        position: relative;
+        background-image: url('image/SUSTAINABILITY.jpg');
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-top: 5vh;
+        overflow: hidden;
         grid-area: News1;
     }
+
+    .News1::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Ubah ke tingkat kegelapan yang diinginkan */
+        z-index: 1;
+    }
+
+    .News1 .title{
+        color: white;
+        font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        z-index: 1;
+    }
+
+    .News1 .sub_title{
+        color: white;
+        font-size: 4rem;
+        font-family: Abolition;
+        z-index: 1;
+    }
+    .News1 .link{
+        color: white;
+        font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        text-decoration: none;
+        z-index: 1;
+    }
+    
+    .News1 .link:hover{
+        color: rgb(255, 68, 68);
+        text-decoration: underline;
+        z-index: 1;
+    }
+
     .News2{
-        background-color: rgb(204, 92, 92);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0 1vh;
+        align-items: center;
+        position: relative;
+        background-image: url('image/LATEST\ STORY.jpg');
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
         grid-area: News2;
     }
+
+    .News2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.3); /* Ubah ke tingkat kegelapan yang diinginkan */
+        z-index: 1;
+    }
+
+    .News2 .title{
+        color: white;
+        font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        z-index: 1;
+    }
+
+    .News2 .sub_title{
+        text-align: center;
+        color: white;
+        font-size: 4rem;
+        font-family: Abolition;
+        z-index: 1;
+    }
+    .News2 .link{
+        color: white;
+        font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        text-decoration: none;
+        z-index: 1;
+    }
+    
+    .News2 .link:hover{
+        color: rgb(255, 68, 68);
+        text-decoration: underline;
+        z-index: 1;
+    }
     .News3{
-        background-color: rgb(221, 156, 156);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0 1vh;
+        align-items: center;
+        position: relative;
+        background-image: url('image/OVERSEAS\ UPDATE.jpg');
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
         grid-area: News3;
     }
-    .News4{
-        background-color: rgb(228, 200, 200);
-        grid-area: News4;
+
+    .News3::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.3); /* Ubah ke tingkat kegelapan yang diinginkan */
+        z-index: 1;
     }
-    footer{
-        background-color: whitesmoke;
-        grid-area: Footer;
+
+    .News3 .title{
+        color: white;
+        font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        z-index: 1;
+    }
+
+    .News3 .sub_title{
+        text-align: center;
+        color: white;
+        font-size: 4rem;
+        font-family: Abolition;
+        z-index: 1;
+    }
+    .News3 .link{
+        color: white;
+        font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        text-decoration: none;
+        z-index: 1;
+    }
+    
+    .News3 .link:hover{
+        color: rgb(255, 68, 68);
+        text-decoration: underline;
+        z-index: 1;
+    }
+
+    .News4{
+        background-image: url('image/Tanamera\ Coffe\ indonesia.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        grid-area: News4;
     }
     nav div ul {
         list-style: none;
@@ -85,55 +293,321 @@
     .menu ul{
         display: flex;
         flex-direction: row;
+        align-items: center;
+        gap: 1vw;
+    }
+    .carousel-image{
+        width: 100vw;
+        height: 80vh;
+        /* background-color: blue; */
+        background-size: 80%;
+        /* background-position: center; */
+        background-repeat: no-repeat;
+    }
+    aside{
+        grid-area: sidebar;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0 1vh;
+        align-items: center;
+        position: relative;
+        background-image: url('image/Red\ Map.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    aside::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.2); /* Ubah ke tingkat kegelapan yang diinginkan */
+        z-index: 1;
+    }
+
+    aside .title{
+        color: white;
+        font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        z-index: 1;
+    }
+
+    aside .sub_title{
+        text-align: center;
+        color: white;
+        font-size: 4rem;
+        font-family: Abolition;
+        z-index: 1;
+    }
+    aside .content{
+        text-align: center;
+        color: white;
+        font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        z-index: 2;
+    }
+    aside .link{
+        color: white;
+        font-size: 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        text-decoration: none;
+        z-index: 1;
+    }
+    
+    aside .link:hover{
+        color: rgb(255, 68, 68);
+        text-decoration: underline;
+        z-index: 1;
+    }
+    
+    footer{
+        grid-area: Footer;
+    }
+    .Lokasi h5{
+        font-size: 14px;
+        letter-spacing: 1.4px;
+        color: #464646;
+        text-transform: uppercase;
+        font-family: AktivGrotesk-Bold;
+        margin: 0;
+        margin-bottom: 1vh;
+    }
+    .Lokasi a{
+        margin-bottom: 1vh;
+        font-family: AktivGrotesk-Regular;
+        font-size: 16px;
+        font-weight: 100;
+        text-decoration: none;
+        color: rgb(71, 71, 71);
+    }
+    .Lokasi a:hover{
+        color: rgb(255, 69, 69);
+    }
+    .perusahaan{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .perusahaan h5{
+        font-size: 14px;
+        letter-spacing: 1.4px;
+        color: #464646;
+        text-transform: uppercase;
+        font-family: AktivGrotesk-Bold;
+        margin: 0;
+        margin-bottom: 1vh;
+    }
+    .perusahaan a{
+        margin-bottom: 1vh;
+        font-family: AktivGrotesk-Regular;
+        font-size: 16px;
+        font-weight: 100;
+        text-decoration: none;
+        color: rgb(71, 71, 71);
+    }
+    .perusahaan a:hover{
+        color: rgb(255, 69, 69);
+    }
+    .newsletter{
+        /* background-color: rgb(60, 123, 123); */
+        width: 40%;
+        height: 100%;
+        padding: 1vh;
+    }
+    .newsletter h5{
+        text-align: end;
+        font-family: AktivGrotesk-Bold;
+        font-size: 14px;
+        letter-spacing: 1.4px;
+        color: #000000;
+        text-transform: uppercase;
+    }
+    .subscribe{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .subscribe label{
+        font-family: AktivGrotesk-Bold;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        font-size: 12px !important;
+    }
+
+    .subscribe input{
+        width: 9vw;
+        padding: 1vh;
+        border: 2px solid rgb(207, 207, 207);
+    }
+    .subscribe button{
+        margin-top: 1.5vh;
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 1vh;
+        width: 8vw;
+        font-size: 0.7rem;
+        font-weight: bold;
+    }
+    .footer{
+        display: flex;
+        justify-content:space-between;
+        /* color: rebeccapurple; */
+        width: 100%;
+        height: 100%;
     }
 </style>
-<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<body>    
     <nav>
-        <a href="">
-            <img src="image/Hamburger_icon.svg.png" alt="" style="max-width: 22px;">
-        </a>
-        <a href="">
-            <img src="image/Logo-Tanamera_New-10.png" alt="" style="max-width: 180px;">
-        </a>
+        <div style="width: 10vw;">
+            <a href="">
+                <img src="image/Hamburger_icon.svg.png" alt="" style="max-width: 2vw;">
+            </a>
+        </div>
+        <div>
+            <a href="">
+                <img src="image/Logo-Tanamera_New-10.png" alt="" style="max-width: 15vw;">
+            </a>
+        </div>
         <div class="menu">
             <ul>
                 <li>
                     <a href="">
-                        <img src="image/search-icon.webp" alt="" style="max-width: 20px;">
+                        <img src="image/search-icon.webp" alt="" style="max-width: 1.8vw;">
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <img src="image/shopping-bag-icon.png" alt="" style="max-width: 20px;">
+                        <img src="image/shopping-bag-icon.png" alt="" style="max-width: 1.5vw;">
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <img src="image/earth-icon.webp" alt="" style="max-width: 20px;">
+                        <img src="image/earth-icon.webp" alt="" style="max-width: 1.5vw;">
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <img src="image/people icon.webp" alt="" style="max-width: 20px;">
+                        <img src="image/people icon.webp" alt="" style="max-width: 2vw;">
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="Header" >Header</div>
-    <div class="Galery Produk1" >Galery</div>
-    <div class="Galery Produk2" >Galery</div>
-    <div class="Galery Produk3" >Galery</div>
-    <div class="Galery Produk4" >Galery</div>
-    <div class="Galery Produk5" >Galery</div>
-    <div class="Galery Produk6" >Galery</div>
-    <div class="Galery Produk7" >Galery</div>
-    <div class="Galery Produk8" >Galery</div>
-    <div class="Galery Produk9" >Galery</div>
-    <div class="News1">News</div>
-    <div class="News2">News</div>
-    <div class="News3">News</div>
-    <div class="News4">News</div>
-    <footer>Footer</footer>
+    <div class="Header" >
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="carousel-image d-block" style="background-image: url('image/Concentrate Sachets.jpg');"></div>
+                <!-- <img src="image/Concentrate Sachets.jpg" style="" class="d-block w-100" alt="..."> -->
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-image d-block" style="background-image: url('image/The monthly Pack.jpg');"></div>
+                <!-- <img src="image/The monthly Pack.jpg" class="d-block w-100" alt="..."> -->
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-image d-block" style="background-image: url('image/from crop to cup.jpg');"></div>
+                <!-- <img src="image/from crop to cup.jpg" class="d-block w-100" alt="..."> -->
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-image d-block" style="background-image: url('image/Fellow.jpg');"></div>
+                <!-- <img src="image/from crop to cup.jpg" class="d-block w-100" alt="..."> -->
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-image d-block" style="background-image: url('image/Tanamera\ x\ hindia.jpg');"></div>
+                <!-- <img src="image/from crop to cup.jpg" class="d-block w-100" alt="..."> -->
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+    <div class="Galery Produk1" style="background-image: url('image/Biji\ Kopi.jpg');" ><p>BIJI KOPI</p></div>
+    <div class="Galery Produk2" style="background-image: url('image/Turbuk.jpg');"><p>TUBRUK</p></div>
+    <div class="Galery Produk3" style="background-image: url('image/Coffe\ Capsule.jpg');"><P>COFFE CAPSULE</P></div>
+    <div class="Galery Produk4" style="background-image: url('image/Coffe\ Drip\ Bag.jpg');"><P>COFFE DRIP BAG</P></div>
+    <div class="Galery Produk5" style="background-image: url('image/Brewing\ Tools.jpg');"><P>BREWING TOOLS</P></div>
+    <div class="Galery Produk6" style="background-image: url('image/Serve.jpg');"><P>SERVE</P></div>
+    <div class="Galery Produk7" style="background-image: url('image/Cold\ Brew.webp');"><P>COLD BREW</P></div>
+    <div class="Galery Produk8" style="background-image: url('image/Gift\ and\ Merch.jpg');"><P>GIFT & MERCH</P></div>
+    <div class="Galery Produk9" style="background-image: url('image/Best\ Seller.jpg');"><P>BEST SELLER</P></div>
+    <div class="News1">
+        <p class="title">SUSTAINABILITY SERIES</p>
+        <p class="sub_title">MAKE AN IMPACT</p>
+        <a class="link" href="">READ MORE</a>
+    </div>
+    <div class="News2">
+        <p class="title">LATEST STORY</p>
+        <p class="sub_title">SENSATIA BOTANICALS X TANAMERA<br>COFFE LAUNCHES SUSTAINABLE BODY<br>SCRUB</p>
+        <a class="link" href="">READ MORE</a>
+    </div>
+    <aside>
+        <p class="title">OUTLET</p>
+        <p class="sub_title">HELLO BALI!</p>
+        <div style="z-index: 2;">
+            <p class="content">We are now at Sunset Road!</p>
+            <p class="content">Please come and visit our soft opening,to sip a specialty coffee on this island of the gods.</p>
+            <p  class="content">JL.Sunset Road No.999,Kuta, Badung, Bali
+                The outlet will be open daily 7AM - 7PM.</p>
+        </div>
+        <a class="link" href="">STORE LOCATION</a>
+    </aside>
+    <div class="News3">
+        <p class="title">OVERSEAS UPDATE</p>
+        <p class="sub_title">ARCORIS: TANAMERA COFFEE'S FIRST<br>OUTLET IN MALAYSIA</p>
+        <a class="link" href="">READ MORE</a>
+    </div>
+    <div class="News4"></div>
+    <footer>
+        <hr color="black" size="5%" >
+        <div class="footer">
+            <div style=" width: 50%; height: 100%; display: flex;">
+                <div style="width: 30%; height: 100%; ">
+                    <div class="Lokasi" style="display: flex; flex-direction: column;">
+                        <h5>Lokasi</h5>
+                        <a href="">Indonesia</a>
+                        <a href="">Singapore</a>
+                    </div>
+                </div>
+                <div class="perusahaan">
+                    <h5>perusahaan</h5>
+                    <a href="">Tentang Kami</a>
+                    <a href="">Karir</a>
+                </div>
+            </div>
+            <div class="newsletter">
+                <h5>NEWSLETTER</h5>
+                <form action="">
+                    <div class="subscribe">
+                            <label for="">EMAIL ADDRESS</label>
+                            <input type="text" placeholder="Email Addres">
+                            <button type="submit">SUBSCRIBE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </footer>
 </body>
 </html>
