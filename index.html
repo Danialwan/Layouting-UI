@@ -6,34 +6,134 @@
     <title>Document</title>
 </head>
 <style>
+    @font-face {
+            font-family: "Abolition";
+            src:url('ABOLITIONTEST-REGULAR.OTF');
+        }
+        
     *{
         margin: 0;
         padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
     }
     body{
         display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 2fr repeat(4, 1fr) 2.5fr 2.5fr 3fr 2fr ;
+        grid-template-areas: 
+        "Header Header Header"
+        "Produk1 Produk2 Produk3"
+        "Produk4 Produk5 Produk6"
+        "Produk7 Produk8 Produk9"
+        "News1 News1 News1"
+        "News2 News2 News2"
+        "News3 News3 News3"
+        "News4 News4 News4"
+        "Footer Footer Footer"
+        ;
+        /* font-family: Abolition; */
+        margin: 6% 5% 0% 5%;
     }
     nav{
-        background-color: aqua;
+        background-color: rgb(255, 255, 255);
+        grid-area: Nav;
+        position: fixed;
+        top: 0;
+        height: 8%;
+        width: 90%;
+        /* box-shadow: 0px 1px 5px rgba(192, 192, 192, 0.3); */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     .Header{
         background-color: bisque;
+        grid-area: Header;
     }
-    .Galery{
+    .Galery:nth-child(even){
         background-color: blueviolet;
+        /* grid-area: Produk1; */
     }
-    .News{
+    .Galery:nth-child(odd){
+        background-color: rgb(43, 122, 226);
+        /* grid-area: Produk1; */
+    }
+    
+    .News1{
         background-color: brown;
+        grid-area: News1;
+    }
+    .News2{
+        background-color: rgb(204, 92, 92);
+        grid-area: News2;
+    }
+    .News3{
+        background-color: rgb(221, 156, 156);
+        grid-area: News3;
+    }
+    .News4{
+        background-color: rgb(228, 200, 200);
+        grid-area: News4;
     }
     footer{
         background-color: whitesmoke;
+        grid-area: Footer;
+    }
+    nav div ul {
+        list-style: none;
+    }
+    .menu ul{
+        display: flex;
+        flex-direction: row;
     }
 </style>
 <body>
-    <nav>Navbar</nav>
+    <nav>
+        <a href="">
+            <img src="image/Hamburger_icon.svg.png" alt="" style="max-width: 22px;">
+        </a>
+        <a href="">
+            <img src="image/Logo-Tanamera_New-10.png" alt="" style="max-width: 180px;">
+        </a>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="">
+                        <img src="image/search-icon.webp" alt="" style="max-width: 20px;">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="image/shopping-bag-icon.png" alt="" style="max-width: 20px;">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="image/earth-icon.webp" alt="" style="max-width: 20px;">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="image/people icon.webp" alt="" style="max-width: 20px;">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="Header" >Header</div>
-    <div class="Galery" >Galery</div>
-    <div class="News">News</div>
+    <div class="Galery Produk1" >Galery</div>
+    <div class="Galery Produk2" >Galery</div>
+    <div class="Galery Produk3" >Galery</div>
+    <div class="Galery Produk4" >Galery</div>
+    <div class="Galery Produk5" >Galery</div>
+    <div class="Galery Produk6" >Galery</div>
+    <div class="Galery Produk7" >Galery</div>
+    <div class="Galery Produk8" >Galery</div>
+    <div class="Galery Produk9" >Galery</div>
+    <div class="News1">News</div>
+    <div class="News2">News</div>
+    <div class="News3">News</div>
+    <div class="News4">News</div>
     <footer>Footer</footer>
 </body>
 </html>
